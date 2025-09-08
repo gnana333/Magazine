@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: college-magazine
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.0
+      - key: MONGO_URI
+        value: mongodb+srv://hello:Gnana123@voting.8vt5bip.mongodb.net/college_magazine?retryWrites=true&w=majority
+      - key: SECRET_KEY
+        generateValue: true
+    plan: free
