@@ -3,10 +3,12 @@ services:
     name: college-magazine
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn --worker-class eventlet -w 1 app:app
+    startCommand: gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 app:app
     envVars:
       - key: PYTHON_VERSION
         value: 3.9.0
+      - key: PORT
+        value: 10000
       - key: MONGO_URI
         value: mongodb+srv://hello:Gnana123@voting.8vt5bip.mongodb.net/college_magazine?retryWrites=true&w=majority
       - key: SECRET_KEY
