@@ -96,8 +96,8 @@ def student_required(f):
     return decorated_function
 
 @app.route('/')
-def index():
-    return render_template('index.html')
+def home():
+    return redirect(url_for('news'))
 
 # Admin Routes
 @app.route('/admin/login', methods=['GET', 'POST'])
